@@ -3,7 +3,10 @@
 **Shifa** (شفا) means *healing* in Urdu.
 
 Shifa AI is an AI-powered medicine companion that helps you search, understand, and never miss your medications. It turns confusing prescriptions and medical jargon into clear, actionable information — and keeps you on track with smart reminders.
-
+- Wrong dosage
+- Missed timing
+- Dangerous side effects
+- Serious health risks
 ---
 
 ## Who Is This For?
