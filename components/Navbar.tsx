@@ -54,30 +54,29 @@ export default function Navbar() {
     <>
       <nav
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'glass shadow-sm' : 'bg-transparent'
+        className={`fixed top-3 md:top-4 left-1/2 -translate-x-1/2 w-[94vw] max-w-7xl z-[101] transition-all duration-300 rounded-full select-none ${
+          scrolled ? 'glass shadow-lg border-white/20' : 'bg-white/10 backdrop-blur-md border border-white/10'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="w-full px-4 sm:px-6 md:px-8">
+          <div className="flex items-center justify-between h-14 md:h-16">
 
-            {/* Logo */}
-            <div ref={logoRef}>
-              <Link href="/" className="flex items-center gap-2.5 group">
-                <div className="w-9 h-9 rounded-xl bg-sage-600 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-200">
+            <div ref={logoRef} className="flex-shrink-0">
+              <Link href="/" className="flex items-center gap-2 group">
+                <div className="w-8 h-8 md:w-9 md:h-9 rounded-xl bg-sage-600 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-200">
                   <Activity size={18} className="text-white" />
                 </div>
-                <span className="font-display text-xl font-bold text-sage-800">Shifa <span className="text-sage-500">AI</span></span>
+                <span className="font-display text-base md:text-lg lg:text-xl font-bold text-sage-800 whitespace-nowrap hidden sm:block">Shifa <span className="text-sage-500">AI</span></span>
               </Link>
             </div>
 
-            {/* Desktop Nav Links */}
-            <div className="hidden md:flex items-center gap-8">
+            {/* Desktop Nav Links - Only visible on Large Screens */}
+            <div className="hidden min-[1100px]:flex items-center gap-4 xl:gap-8">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`nav-link text-sm font-medium transition-colors duration-200 ${
+                  className={`nav-link text-sm font-medium transition-colors duration-200 whitespace-nowrap ${
                     pathname === item.href
                       ? 'text-sage-700 active'
                       : 'text-sage-500 hover:text-sage-700'
@@ -89,18 +88,18 @@ export default function Navbar() {
             </div>
 
             {/* Desktop CTA */}
-            <div className="hidden md:flex items-center gap-3">
+            <div className="hidden min-[1100px]:flex items-center gap-3">
               <ThemeToggle />
-              <Link href="/" onClick={handleAuthClick} className="btn-ghost text-sm py-2 px-4">
+              <Link href="/" onClick={handleAuthClick} className="btn-ghost text-sm py-2 px-4 whitespace-nowrap">
                 {isAuthenticated ? 'Sign Out' : 'Sign In'}
               </Link>
               </div>
 
-            {/* Mobile Hamburger */}
-            <div className="md:hidden flex items-center gap-2">
+            {/* Mobile/Tablet Hamburger */}
+            <div className="min-[1100px]:hidden flex items-center gap-2">
               <ThemeToggle />
               <button
-                className="p-2 rounded-lg text-sage-700 hover:bg-sage-100 transition-colors"
+                className="theme-toggle !p-2 !gap-0"
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-label="Toggle menu"
               >
@@ -113,7 +112,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
+        className={`fixed inset-0 z-[100] min-[1100px]:hidden transition-all duration-300 ${
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
@@ -124,8 +123,8 @@ export default function Navbar() {
         />
         {/* Drawer */}
         <div
-          className={`absolute top-0 right-0 h-full w-72 glass shadow-2xl transition-transform duration-300 ${
-            menuOpen ? 'translate-x-0' : 'translate-x-full'
+          className={`absolute top-2 right-2 bottom-2 w-[calc(100%-1rem)] max-w-sm glass shadow-2xl rounded-[2rem] transition-transform duration-500 ease-out border border-white/20 ${
+            menuOpen ? 'translate-x-0' : 'translate-x-[110%]'
           }`}
         >
           <div className="pt-20 px-6 flex flex-col gap-2">

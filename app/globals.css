@@ -103,17 +103,19 @@ body {
 
 /* ============ GLASS MORPHISM ============ */
 .glass {
-  background: var(--surface-soft);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border-soft);
+  background: color-mix(in srgb, var(--surface-elevated) 65%, transparent);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid color-mix(in srgb, var(--border-soft) 40%, white 20%);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
 }
 
 .glass-dark {
-  background: var(--surface-overlay);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(115, 155, 118, 0.25);
+  background: color-mix(in srgb, var(--surface-elevated) 60%, transparent);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 /* ============ CUSTOM SCROLLBAR ============ */
@@ -214,7 +216,7 @@ body {
 .input-elegant {
   background: var(--surface-elevated);
   border: 1.5px solid color-mix(in srgb, var(--border-strong) 82%, transparent);
-  border-radius: 12px;
+  border-radius: 9999px;
   padding: 0.75rem 1rem;
   transition: all 0.2s ease;
   font-family: var(--font-body);
@@ -238,7 +240,7 @@ body {
   background: var(--sage-600);
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 9999px;
   padding: 0.75rem 1.75rem;
   font-family: var(--font-body);
   font-size: 0.9rem;
@@ -265,7 +267,7 @@ body {
   background: transparent;
   color: var(--text-secondary);
   border: 1.5px solid color-mix(in srgb, var(--text-subtle) 55%, transparent);
-  border-radius: 12px;
+  border-radius: 9999px;
   padding: 0.75rem 1.75rem;
   font-family: var(--font-body);
   font-size: 0.9rem;
@@ -326,6 +328,16 @@ body {
 .theme-toggle__label {
   font-size: 0.82rem;
   font-weight: 600;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .theme-toggle__label {
+    display: none;
+  }
+  .theme-toggle {
+    padding: 0.35rem;
+  }
 }
 
 html[data-theme='dark'] .noise-overlay::after {
